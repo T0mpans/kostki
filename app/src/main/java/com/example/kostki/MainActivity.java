@@ -3,6 +3,7 @@ package com.example.kostki;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,10 +11,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     Button przyciskRzuc;
+    ImageView kostka1, kostka2, kostka3, kostka4,kostka5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +24,19 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        przyciskRzuc.findViewById(R.id.buttonrzuc);
+        przyciskRzuc = findViewById(R.id.buttonrzuc);
+        kostka1 = findViewById(R.id.imageView1);
+        kostka2 = findViewById(R.id.imageView2);
+        kostka3 = findViewById(R.id.imageView3);
+        kostka4 = findViewById(R.id.imageView4);
+        kostka5 = findViewById(R.id.imageView5);
+
+//        ArrayList<ImageView> obrazki = new ArrayList<>();
+//        obrazki.add(kostka1);
+//        obrazki.add(kostka2);
+//        obrazki.add(kostka3);
+//        obrazki.add(kostka4);
+//        obrazki.add(kostka5);
 
         przyciskRzuc.setOnClickListener(
                 new View.OnClickListener() {
@@ -39,9 +54,10 @@ public class MainActivity extends AppCompatActivity {
         int[] lista = new int[ileKostek];
 
         for (int i = 1; i <= ileKostek; i++) {
-            int wynikRzutu = random.nextInt(6)+1;
+            int wynikRzutu = random.nextInt(6);
             System.out.println("Kostka " + i + ": " + wynikRzutu);
             lista[i - 1] = wynikRzutu;
+
         }
         return obliczPunkty(lista);
     }
