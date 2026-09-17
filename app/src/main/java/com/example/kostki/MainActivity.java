@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     Button przyciskRzuc;
     ImageView kostka1, kostka2, kostka3, kostka4,kostka5;
+    TextView textViewWynik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         kostka3 = findViewById(R.id.imageView3);
         kostka4 = findViewById(R.id.imageView4);
         kostka5 = findViewById(R.id.imageView5);
+        textViewWynik = findViewById(R.id.textViewWynik);
 
 //        ArrayList<ImageView> obrazki = new ArrayList<>();
 //        obrazki.add(kostka1);
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 wynik2 += (i + 1) * indeksy[i];
             }
         }
+
         return wynik2;
     }
 }
