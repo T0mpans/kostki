@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         textViewWynik = findViewById(R.id.textViewWynik);
 
         int[]listaZdjec = new int[]{
-                R.drawable.k1, R.drawable.k2, R.drawable.k3, R.drawable.k4, R.drawable.k5
+                R.drawable.k1, R.drawable.k2, R.drawable.k3, R.drawable.k4, R.drawable.k5, R.drawable.k6
         };
 
         ArrayList<ImageView> obrazki = new ArrayList<>();
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             int wynikRzutu = random.nextInt(6)+1;
             System.out.println("Kostka " + i + ": " + wynikRzutu);
             lista[i - 1] = wynikRzutu;
-            //obrazki.get(i - 1).setImageResource(listaZdjec[wynikRzutu-1]);
+            obrazki.get(i - 1).setImageResource(listaZdjec[wynikRzutu-1]);
         }
         return obliczPunkty(lista, textViewWynik);
     }
