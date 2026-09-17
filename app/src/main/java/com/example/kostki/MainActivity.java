@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    Button przyciskRzuc;
+    Button przyciskRzuc, przyciskReset;
     ImageView kostka1, kostka2, kostka3, kostka4,kostka5;
-    TextView textViewWynik;
+    TextView textViewWynik, textViewWynikCalejGry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         przyciskRzuc = findViewById(R.id.buttonrzuc);
+        przyciskReset = findViewById(R.id.buttonReset);
         kostka1 = findViewById(R.id.imageView1);
         kostka2 = findViewById(R.id.imageView2);
         kostka3 = findViewById(R.id.imageView3);
         kostka4 = findViewById(R.id.imageView4);
         kostka5 = findViewById(R.id.imageView5);
         textViewWynik = findViewById(R.id.textViewWynik);
+        textViewWynikCalejGry = findViewById(R.id.textViewWynikCalejGry);
 
         int[]listaZdjec = new int[]{
                 R.drawable.k1, R.drawable.k2, R.drawable.k3, R.drawable.k4, R.drawable.k5, R.drawable.k6
@@ -49,13 +51,22 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        System.out.println(losujKostke(5, textViewWynik, listaZdjec, obrazki));
+                        int ostateczny = Integer.parseInt(textViewWynikCalejGry.getText().toString());
+                        System.out.println(losujKostke(5, textViewWynik, listaZdjec, obrazki, ostateczny, textViewWynikCalejGry));
                     }
                 }
         );
 
+        przyciskReset.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                }
+        );
     }
-    public static int losujKostke(int ileKostek, TextView textViewWynik, int[]listaZdjec, ArrayList<ImageView> obrazki) {
+    public static int losujKostke(int ileKostek, TextView textViewWynik, int[]listaZdjec, ArrayList<ImageView> obrazki, int ostateczny, TextView textViewWynikCalejGry) {
         Random random = new Random();
 
         int[] lista = new int[ileKostek];
@@ -66,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
             lista[i - 1] = wynikRzutu;
             obrazki.get(i - 1).setImageResource(listaZdjec[wynikRzutu-1]);
         }
-        return obliczPunkty(lista, textViewWynik);
+        return obliczPunkty(lista, textViewWynik, ostateczny, textViewWynikCalejGry);
     }
 
-    public static int obliczPunkty(int[] lista, TextView textViewWynik) {
+    public static int obliczPunkty(int[] lista, TextView textViewWynik, int ostateczny, TextView textViewWynikCalejGry) {
         int[] indeksy = new int[]{0, 0, 0, 0, 0, 0};
         int wynik2 = 0;
         for (int i = 0; i < lista.length; i++) {
@@ -81,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         textViewWynik.setText("Wynik tego losowania: "+wynik2);
+        ostateczny+=wynik2;
+        textViewWynikCalejGry.setText(""+ostateczny);
         return wynik2;
     }
 }
