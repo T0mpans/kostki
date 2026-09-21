@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         textViewWynikCalejGry = findViewById(R.id.textViewWynikCalejGry);
 
         int[]listaZdjec = new int[]{
-                R.drawable.k1, R.drawable.k2, R.drawable.k3, R.drawable.k4, R.drawable.k5, R.drawable.k6
+                R.drawable.k1, R.drawable.k2, R.drawable.k3, R.drawable.k4, R.drawable.k5, R.drawable.k6, R.drawable.question
         };
 
         ArrayList<ImageView> obrazki = new ArrayList<>();
@@ -61,7 +61,16 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        int wynik2 = 0;
+                        textViewWynik.setText("Wynik tego losowania: "+wynik2);
+                        int ostateczny = Integer.parseInt(textViewWynikCalejGry.getText().toString());
+                        ostateczny = 0;
+                        textViewWynikCalejGry.setText(""+ostateczny);
+                        int ileKostek = 5;
 
+                        for (int i = 1; i <= ileKostek; i++) {
+                            obrazki.get(i - 1).setImageResource(listaZdjec[6]);
+                        }
                     }
                 }
         );
