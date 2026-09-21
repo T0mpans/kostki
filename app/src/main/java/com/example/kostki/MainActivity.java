@@ -62,11 +62,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         int wynik2 = 0;
-                        textViewWynik.setText("Wynik tego losowania: "+wynik2);
                         int ostateczny = Integer.parseInt(textViewWynikCalejGry.getText().toString());
                         ostateczny = 0;
-                        textViewWynikCalejGry.setText(""+ostateczny);
                         int ileKostek = 5;
+
+                        textViewWynik.setText("Wynik tego losowania: "+wynik2);
+                        textViewWynikCalejGry.setText(""+ostateczny);
 
                         for (int i = 1; i <= ileKostek; i++) {
                             obrazki.get(i - 1).setImageResource(listaZdjec[6]);
